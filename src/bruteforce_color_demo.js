@@ -24,7 +24,7 @@
 
 import { sha256 } from "ethereum-cryptography/sha256";
 import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
-import { normalizeHash } from "./utils";
+import { normalizeHash } from "./utils.js";
 
 // ---------------------------------
 // 1) Dati di esempio (lo "spazio di ricerca")

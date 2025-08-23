@@ -1,6 +1,9 @@
 // ---------------------------------------------------------
 // NORMALIZZAZIONE HASH – utile per confronti (hex / 0x / maiuscole)
 // Accetta: Uint8Array o stringhe hex (con/senza 0x), normalizza in hex lower
+
+import { toHex } from "ethereum-cryptography/utils";
+
 // ---------------------------------------------------------
 export function normalizeHash(input) {
   if (input instanceof Uint8Array) return toHex(input).toLowerCase();

@@ -13,7 +13,7 @@
 
 import { keccak256 } from "ethereum-cryptography/keccak";
 import { utf8ToBytes, toHex } from "ethereum-cryptography/utils";
-import { normalizeHash } from "./utils";
+import { normalizeHash } from "./utils.js";
 
 // ---------------------------------------------------------
 // 1) HASH DI UN MESSAGGIO (Keccak256) – base in Ethereum
