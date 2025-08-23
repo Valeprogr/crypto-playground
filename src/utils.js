@@ -1,0 +1,9 @@
+// ---------------------------------------------------------
+// NORMALIZZAZIONE HASH – utile per confronti (hex / 0x / maiuscole)
+// Accetta: Uint8Array o stringhe hex (con/senza 0x), normalizza in hex lower
+// ---------------------------------------------------------
+export function normalizeHash(input) {
+  if (input instanceof Uint8Array) return toHex(input).toLowerCase();
+  if (typeof input === "string") return input.toLowerCase().replace(/^0x/, "");
+  throw new TypeError("hash must be Uint8Array or hex string");
+}

@@ -1,5 +1,6 @@
 // ===============================
-// Brute Force Hashing (Demo didattica)
+// Brute Force Hashing – Ethereum Study Guide
+// Autore: [Valentina Vittoria]
 // ===============================
 //
 // Obiettivo: mostrare come funziona un confronto "brute force" su un insieme
@@ -23,6 +24,7 @@
 
 import { sha256 } from "ethereum-cryptography/sha256";
 import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
+import { normalizeHash } from "./utils";
 
 // ---------------------------------
 // 1) Dati di esempio (lo "spazio di ricerca")
@@ -40,12 +42,6 @@ function sha256HexOfString(str) {
   return toHex(digest).toLowerCase();  // stringa hex
 }
 
-/** Normalizza l’input hash (Uint8Array o stringa hex) in stringa hex minuscola senza prefisso 0x. */
-function normalizeHash(input) {
-  if (input instanceof Uint8Array) return toHex(input).toLowerCase();
-  if (typeof input === "string") return input.toLowerCase().replace(/^0x/, "");
-  throw new TypeError("hash must be Uint8Array or hex string");
-}
 
 // ---------------------------------
 // 3) Brute force: cerca il candidato che produce un certo hash
