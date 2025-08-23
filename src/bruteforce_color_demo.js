@@ -73,7 +73,7 @@ export function findMatchingCandidateByHash(targetHash, candidates) {
  * calcoliamo il suo hash, poi proviamo a risalirci via brute force
  * sullo spazio dei colori candidati.
  */
-function runDemo() {
+export function runDemo() {
   const secretColor = "blue";
   const targetHash = sha256HexOfString(secretColor);
 

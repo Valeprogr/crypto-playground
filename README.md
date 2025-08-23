@@ -26,16 +26,24 @@ L’obiettivo è raccogliere esempi pratici e appunti per imparare:
   3. `normalizeHash()` → normalizzazione hash per confronti robusti.  
 
 - **`src/crypto-basics/get-address.js`**  
-  Derivazione di un indirizzo Ethereum da una chiave pubblica (65 byte uncompressed).  
+  Derivazione di un indirizzo Ethereum da una chiave pubblica (65 byte uncompressed). 
+
+- **`src/pow_miner_demo.js`**
+    Proof of Work — Mini Miner (didattico)
 
 - **(In arrivo)**  
--  mining proof of work
+Hashing and Proof of Work
 
-### 📝 Appunti
-- **`argomenti_orali/Public_Key_Cryptography.md`**  
-  Spiegazione semplice della crittografia a chiave pubblica, con esempi e analogie.  
 
----
+
+### 📝 Appunti (cheatsheet)
+
+* `argomenti_orali/Public_Key_Cryptography.md` — Guida pratica alla **crittografia a chiave pubblica**: concetti chiave, analogie, differenza tra **cifratura** e **firma**.
+* `argomenti_orali/crypto_resources.md` — **Raccolta di risorse** (articoli, wiki, video) su ECDSA, RSA, Diffie-Hellman, Bitcoin/Ethereum.
+* `argomenti_orali/PoW_Nakamoto_Consensus.md` — Sintesi di **Proof-of-Work**, **Nakamoto Consensus**, fork, aggiustamento di **difficoltà/target** e **conferme**.
+
+
+
 
 ## 📦 Dipendenze
 

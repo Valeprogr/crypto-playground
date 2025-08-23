@@ -12,8 +12,8 @@ Una raccolta di link utili per approfondire i concetti di **crittografia a chiav
 
 ## ✍️ Firme Digitali (ECDSA)
 - [Cryptobook – ECDSA: Sign & Verify Messages](https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages)  
-- [Wikipedia – Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)  
-- [Cloudflare Blog – ECDSA, the digital signature algorithm of a better Internet](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/)
+- [Wikipedia – Elliptic Curve Digital Signature Algorithm](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm)  (questo)
+- [Cloudflare Blog – ECDSA, the digital signature algorithm of a better Internet](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/) (questo)
 
 ---
 
@@ -33,8 +33,8 @@ Una raccolta di link utili per approfondire i concetti di **crittografia a chiav
 ---
 
 ## 🎥 Video didattici (vari)
-- [YouTube – Diffie-Hellman Key Exchange Explained](https://www.youtube.com/watch?v=NmM9HA2MQGI)  
+- [YouTube – Diffie-Hellman Key Exchange Explained](https://www.youtube.com/watch?v=NmM9HA2MQGI)  (questo)
 - [YouTube – Digital Signatures (ECDSA) Explained](https://www.youtube.com/watch?v=Yjrfm_oRO0w)  
-- [YouTube – Elliptic Curve Cryptography (ECC) Explained](https://www.youtube.com/watch?v=NF1pwjL9-DE)  
+- [YouTube – Elliptic Curve Cryptography (ECC) Explained](https://www.youtube.com/watch?v=NF1pwjL9-DE)   (queso)
 
 ---

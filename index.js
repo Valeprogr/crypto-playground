@@ -1,19 +1,16 @@
-import { sha256 } from "ethereum-cryptography/sha256";
-import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
+
+import { toHex } from "ethereum-cryptography/utils";
 import * as secp from '@noble/secp256k1';
 import { getRandomBytesSync } from "ethereum-cryptography/random.js";
 import { getAddress } from "./src/get_address.js";
+import { runDemo } from "./src/bruteforce_color_demo.js";
+import { runPowDemo } from "./src/pow_miner_demo.js";
 
-import { findMatchingCandidateByHash, dataset } from "./src/bruteforce_color_demo.js";
-console.log("=== BRUTE FORCE COLOR DEMO ===");
+// ===============================
+// Esegui anche la demo di bruteforce_color_demo.js
+// ===============================  
 
-const msg = "blue"; // prova con un colore presente nel dataset
-const hash = sha256(utf8ToBytes(msg));
-
-console.log("Hash di", msg, ":", toHex(hash));
-
-const found = findMatchingCandidateByHash(hash, dataset.CANDIDATE_COLORS);
-console.log("Colore trovato:", found);
+runDemo()
 
 
 // ===============================
@@ -35,3 +32,10 @@ const address = getAddress(pubKey);
 console.log("Private key:", toHex(privKey));
 console.log("Public key:", toHex(pubKey));
 console.log("Ethereum address:", address);
+
+
+// ===============================
+// Esegui proof_of_work_demo.js
+// ===============================
+
+runPowDemo();

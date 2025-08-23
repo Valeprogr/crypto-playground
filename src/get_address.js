@@ -54,11 +54,10 @@ export function getAddress(publicKey) {
 }
 
 // =============================================================
-// DEMO – eseguibile direttamente da terminale
-// node src/crypto-basics/get-address.js
+// DEMO
 // =============================================================
-if (import.meta.url === `file://${process.argv[1]}`) {
-  console.log("=== DEMO getAddress ===");
-  console.log("⚠️ Per la demo serve una chiave pubblica Uint8Array valida.");
-  console.log("Suggerimento: genera chiavi con secp256k1.");
-}
+
+
+
+// TODO: Aggiungi una demo eseguibile da INDEX.JS
+// Così puoi vedere l'indirizzo generato ogni volta che esegui `node
