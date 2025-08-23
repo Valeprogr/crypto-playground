@@ -1,9 +1,3 @@
-Eccoti il README aggiornato con tutto quello che abbiamo aggiunto finora 🚀
-Ho organizzato la struttura e aggiunto i nuovi file (`get-address.js`, `keccak-basics.js`, ecc.), oltre a menzionare `@noble/secp256k1` che serve per generare chiavi pubbliche.
-
----
-
-````markdown
 # 🔐 Crypto Playground
 
 Un piccolo playground didattico per esplorare concetti di **crittografia** legati a **Ethereum** e alla **blockchain**, usando JavaScript e le librerie [`ethereum-cryptography`](https://github.com/ethereumjs/ethereum-cryptography) e [`@noble/secp256k1`](https://github.com/paulmillr/noble-secp256k1).
