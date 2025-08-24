@@ -1,1 +1,0 @@
-const findColor = require("./src/findColor");
