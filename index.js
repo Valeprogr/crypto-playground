@@ -5,6 +5,7 @@ import { getRandomBytesSync } from "ethereum-cryptography/random.js";
 import { getAddress } from "./src/get_address.js";
 import { runDemo } from "./src/bruteforce_color_demo.js";
 import { runPowDemo } from "./src/pow_miner_demo.js";
+import { runMiniPowDemo } from "./src/simple_pow_blockchain.js";
 
 // ===============================
 // Esegui anche la demo di bruteforce_color_demo.js
@@ -39,3 +40,9 @@ console.log("Ethereum address:", address);
 // ===============================
 
 runPowDemo();
+
+// ===============================
+// Esegui simple_pow_blockchain.js
+// ===============================
+
+runMiniPowDemo();

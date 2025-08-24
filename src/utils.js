@@ -10,3 +10,9 @@ export function normalizeHash(input) {
   if (typeof input === "string") return input.toLowerCase().replace(/^0x/, "");
   throw new TypeError("hash must be Uint8Array or hex string");
 }
+
+export  const createTimeStamp = () => {
+    const timestamp = new Date().getTime();
+    //console.log("Timestamp:", timestamp);
+    return timestamp;
+}

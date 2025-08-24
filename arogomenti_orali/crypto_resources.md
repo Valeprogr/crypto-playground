@@ -38,3 +38,6 @@ Una raccolta di link utili per approfondire i concetti di **crittografia a chiav
 - [YouTube – Elliptic Curve Cryptography (ECC) Explained](https://www.youtube.com/watch?v=NF1pwjL9-DE)   (queso)
 
 ---
+
+
+- [Blockchain Demo] (https://blockchaindemo.io/)
