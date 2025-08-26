@@ -41,3 +41,9 @@ Una raccolta di link utili per approfondire i concetti di **crittografia a chiav
 
 
 - [Blockchain Demo] (https://blockchaindemo.io/)
+- https://github.com/charliermarsh/script
+- https://bitcoin.stackexchange.com/questions/29754/history-behind-the-scripting-language-in-bitcoin/29763#29763
+- vhttps://en.bitcoin.it/wiki/Script
+- https://bitcoinwiki.org/wiki/pay-to-pubkey-hash
+- https://en.bitcoin.it/wiki/Pay_to_script_hash
+- https://www.blockchain.com/explorer/blocks/btc/0
