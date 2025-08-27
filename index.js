@@ -6,6 +6,7 @@ import { getAddress } from "./src/get_address.js";
 import { runDemo } from "./src/bruteforce_color_demo.js";
 import { runPowDemo } from "./src/pow_miner_demo.js";
 import { runMiniPowDemo } from "./src/simple_pow_blockchain.js";
+import { demo_bts_recursion_exercise } from "./src/bst_recursion_exercise.js";
 
 // ===============================
 // Esegui anche la demo di bruteforce_color_demo.js
@@ -46,3 +47,10 @@ runPowDemo();
 // ===============================
 
 runMiniPowDemo();
+
+
+// ================================
+// Esegui bst_recursion_exercise.js
+// ================================
+
+demo_bts_recursion_exercise();
