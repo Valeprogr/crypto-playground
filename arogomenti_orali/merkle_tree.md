@@ -1,88 +1,105 @@
-# 🌲 Cos’è un Merkle Tree 
+# 🌲 Cos’è un Merkle Tree
 
-È un **albero di hash**: prendi tanti dati (es. transazioni), fai l’**hash** di ognuno (foglie), poi **combini a coppie** e rimetti l’hash dei due sopra… finché resta **un solo hash** in cima: la **Merkle root**.
+Un **Merkle Tree** è un **albero di hash**.
+Funziona così:
 
-Piccolo schema:
+1. Prendi tanti dati (es. transazioni).
+2. Calcoli l’**hash** di ognuno → diventano le **foglie**.
+3. Combini gli hash **a coppie** e calcoli l’hash del risultato → nodo padre.
+4. Ripeti fino a ottenere **un solo hash** in cima: la **Merkle root**.
+
+### Schema semplificato
 
 ```
 tx1  tx2  tx3  tx4
  |    |    |    |
-h1   h2   h3   h4        (h1 = hash(tx1), ecc.)
+h1   h2   h3   h4     (h1 = hash(tx1), ecc.)
   \ /      \ /
-  a         b            (a = hash(h1+h2), b = hash(h3+h4))
-       \   /
-        ROOT             (ROOT = hash(a+b))
+   a        b        (a = hash(h1+h2), b = hash(h3+h4))
+        \  /
+        ROOT        (ROOT = hash(a+b))
 ```
 
-> “+” = concatenazione di byte prima di fare l’hash.
+👉 “+” = concatenazione di byte prima di fare l’hash.
 
 ---
 
-## 🧠 Perché si usa in blockchain?
+## 🧠 Perché è usato in blockchain?
 
-Perché permette di **riassumere tante transazioni in un solo hash** (la Merkle root) che finisce dentro al **blocco**.
-Così:
+Perché permette di **riassumere tante transazioni in un solo hash** (la *Merkle root*), che viene salvata nell’**header del blocco**.
 
-* il blocco “promette”: “queste sono esattamente le tx che contengo”;
-* chiunque può **verificare** che una specifica tx è dentro **senza** scaricare tutto il blocco (SPV, *light clients*).
+* Il blocco “dichiara”: *“queste sono esattamente le transazioni che contengo”*.
+* Chiunque può **verificare** che una transazione sia inclusa **senza scaricare tutto il blocco** → utile per *light clients* (SPV).
 
-In Bitcoin, la Merkle root delle transazioni è salvata nell’**header del blocco**.
-In Ethereum, il concetto è esteso (Merkle-Patricia tries) per **stato account, storage, logs**.
+📌 In **Bitcoin**: la *Merkle root* riassume le transazioni di un blocco.
+📌 In **Ethereum**: il concetto è esteso ai **Patricia Merkle Trie** per stato, storage e log.
 
 ---
 
 ## ✅ Vantaggi principali
 
 1. **Verifica veloce (O(log n))**
-   Per provare che *tx7* è dentro, basta inviare **tx7 + pochi hash “fratelli”** (il cosiddetto **Merkle proof**). La prova cresce come **log₂(n)**, non con n.
+   Per provare che una tx è inclusa basta la transazione + pochi hash “fratelli” (Merkle proof).
 
 2. **Efficienza per light clients (SPV)**
-   Un wallet “leggero” non scarica tutto: basta l’**header** del blocco (che ha la root) + la **prova Merkle**. Pochi KB invece di MB.
+   I wallet leggeri scaricano solo gli **header** (con la root) + la prova → pochi KB invece di MB.
 
 3. **Integrità a cascata**
-   Se **cambi 1 byte** in una tx, cambia il suo hash, poi il nodo sopra, poi sopra ancora… **fino alla root**. Quindi è **impossibile** alterare una tx **senza** far cambiare la root del blocco.
+   Se cambi un singolo byte in una tx → cambia il suo hash → cambia tutta la catena fino alla root.
 
 4. **Scalabilità**
-   Aggiungere tante tx fa crescere i dati in modo lineare, ma i **costi di verifica** crescono solo **logaritmicamente**.
+   Con tante transazioni i dati crescono linearmente, ma i **costi di verifica** crescono solo logaritmicamente.
 
 ---
 
-## 🔐 Perché è “sicuro” per salvare/verificare dati?
+## 🔐 Perché è sicuro?
 
-“**Sicuro**” qui vuol dire **integrità** (rilevare manomissioni), non segretezza.
+“**Sicuro**” qui significa **integrità** (rilevare manomissioni).
+Si basa sulle proprietà delle funzioni **hash crittografiche**:
 
-Si basa sulle proprietà delle **funzioni di hash crittografiche**:
+* **Collision resistant**: impossibile trovare due input diversi con lo stesso hash.
+* **Second preimage resistant**: dato un hash, non puoi inventarti un altro input che lo produca.
+* **Effetto valanga**: basta cambiare 1 bit → hash completamente diverso.
 
-* **Resistenza alle collisioni**: trovare **due dati diversi** con **lo stesso hash** è computazionalmente impraticabile.
-* **Second preimage**: dato un hash, non riesci a inventarti un altro contenuto che lo produca.
-* **Effetto valanga**: cambi un bit → hash completamente diverso.
+👉 Quindi:
 
-Quindi:
+* Se alteri una tx, la *Merkle root* cambia.
+* Per falsificarla servirebbero collisioni hash → **impraticabile** con hash moderni.
 
-* Se qualcuno prova a sostituire/alterare dati, la **Merkle root cambia**.
-* Per “barare” dovrebbe trovare collisioni per far coincidere la root… **impraticabile** con hash moderni.
-
-> Nota: la Merkle tree **non cifra** i dati; serve a **dimostrare che non sono stati cambiati**. Se vuoi **privacy**, serve la crittografia a parte.
+> 🔎 Nota: il Merkle Tree **non cripta** i dati. Garantisce integrità, non privacy.
 
 ---
 
-## 🧪 Mini esempio di “Merkle proof”
+## 🧪 Esempio di Merkle Proof
 
-Supponiamo 8 transazioni. Per provare che **tx5** è inclusa, ti bastano:
+Supponiamo 8 transazioni.
+Per dimostrare che **tx5** è inclusa bastano:
 
-* l’hash di **tx5**
-* gli hash “fratelli” lungo il percorso fino alla root (circa **log₂(8)=3** hash)
+* l’hash di **tx5**,
+* * gli hash “fratelli” lungo il percorso fino alla root (circa log₂(8) = 3 hash).
 
-Ricostruisci gli hash verso l’alto e confronti la root calcolata con la **Merkle root nel blocco**:
+Con questi si ricostruisce la root e si confronta con quella nell’header:
 
-* se uguale → **inclusa e intatta**;
-* se diversa → qualcosa non torna.
+* se coincide → tx5 è inclusa e intatta,
+* se no → i dati sono corrotti.
+
+---
+
+## 📖 Vocabolario essenziale
+
+* **Merkle Tree** → struttura ad albero per verificare dati.
+* **Merkle Root** → l’hash finale che riassume tutto il contenuto di un blocco.
+* **Merkle Path** → la sequenza di hash necessari a risalire fino alla root.
+* **Merkle Proof** → dimostrazione che una transazione è inclusa in un blocco senza esaminare tutto il blocco.
 
 ---
 
 ## 🧾 TL;DR
 
-* **Merkle tree = albero di hash**; la **root** riassume tutto.
-* In blockchain garantisce **integrità** e **prove compatte** d’inclusione.
-* **Veloce da verificare** (O(log n)), perfetto per **light clients**.
-* “Sicuro” perché si appoggia alla **robustezza degli hash**: se cambi qualcosa, la root “urla”.
+* Merkle Tree = **albero di hash**.
+* La **root** riassume tutte le transazioni.
+* Permette prove di inclusione **compatte** (O(log n)).
+* Fondamentale per **light clients**.
+* Sicurezza basata sulla robustezza degli **hash crittografici**.
+
+

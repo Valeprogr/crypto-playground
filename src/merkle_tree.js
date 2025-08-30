@@ -128,6 +128,19 @@ class MerkleTree {
     }
     return proof;
   }
+
+  // Funzione di verifica: ricostruisce l'hash partendo dalla foglia + proof
+  // rispettando il flag 'left' (indica DOVE sta il SIBLING!)
+  verifyProof = (leaf, proof, concat, expectedRoot) => {
+    let h = leaf;
+    for (const { data, left } of proof) {
+      // Se il sibling è a sinistra (left === true) -> concat(sibling, h)
+      // Se il sibling è a destra  (left === false) -> concat(h, sibling)
+      h = left ? concat(data, h) : concat(h, data);
+    }
+    return h === expectedRoot;
+  };
+
 }
 
 
@@ -148,22 +161,11 @@ export const demoMerkleTree = () => {
   console.log("Root with duplication (dup):        ", tree.getRoot());
   console.log("Root without duplication (no-dup):  ", tree.getRootWithoutReplicate());
 
-  // Funzione di verifica: ricostruisce l'hash partendo dalla foglia + proof
-  // rispettando il flag 'left' (indica DOVE sta il SIBLING!)
-  const verifyProof = (leaf, proof, concat, expectedRoot) => {
-    let h = leaf;
-    for (const { data, left } of proof) {
-      // Se il sibling è a sinistra (left === true) -> concat(sibling, h)
-      // Se il sibling è a destra  (left === false) -> concat(h, sibling)
-      h = left ? concat(data, h) : concat(h, data);
-    }
-    return h === expectedRoot;
-  };
 
   // Mostra la proof per ogni foglia e verifica contro la root NO-DUP
   leaves.forEach((leaf, index) => {
     const proof = tree.getProof(index); // <- NO-DUP
-    const ok = verifyProof(leaf, proof, concat, tree.getRootWithoutReplicate());
+    const ok = tree.verifyProof(leaf, proof, concat, tree.getRootWithoutReplicate());
     console.log(`\nProof for leaf '${leaf}' (index ${index}):`, proof);
     console.log(`Verifica contro ROOT no-dup: ${ok ? "OK ✅" : "NO ❌"}`);
   });
