@@ -8,6 +8,7 @@ import { runPowDemo } from "./src/pow_miner_demo.js";
 import { runMiniPowDemo } from "./src/simple_pow_blockchain.js";
 import { demo_bts_recursion_exercise } from "./src/bst_recursion_exercise.js";
 import { demoMerkleTree } from "./src/merkle_tree.js";
+import { patriciaMerkleTreeDemo } from "./src/patricia_merkle_tree.js";
 
 // ===============================
 // Esegui anche la demo di bruteforce_color_demo.js
@@ -62,3 +63,14 @@ demo_bts_recursion_exercise();
 // ================================ 
 console.log("\n=== MERKLE TREE DEMO ===");
 demoMerkleTree()
+
+// ================================
+
+
+
+
+// Esegui patricia_merkle_tree.js
+// ================================ 
+console.log("\n=== PATRICIA MERKLE TREE DEMO ===");
+patriciaMerkleTreeDemo();
+// ================================
