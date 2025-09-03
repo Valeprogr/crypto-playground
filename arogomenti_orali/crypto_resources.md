@@ -47,3 +47,11 @@ Una raccolta di link utili per approfondire i concetti di **crittografia a chiav
 - https://bitcoinwiki.org/wiki/pay-to-pubkey-hash
 - https://en.bitcoin.it/wiki/Pay_to_script_hash
 - https://www.blockchain.com/explorer/blocks/btc/0
+
+
+
+-----
+
+https://medium.com/shyft-network/understanding-trie-databases-in-ethereum-9f03d2c3325d
+https://ethereum.stackexchange.com/questions/268/ethereum-block-architecture/6413#6413
+https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/

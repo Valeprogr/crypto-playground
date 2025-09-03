@@ -96,3 +96,35 @@ export const patriciaMerkleTreeDemo = () => {
     // 4) (Opzionale) Stampa tutte le parole memorizzate
     console.log('\nParole nella trie:', trie.listWords());
 }
+
+
+// Per ricordare: concetti chiave -
+
+
+// Struttura:
+// Ogni TrieNode contiene un carattere (key), i suoi children e il flag isWord.
+// La radice ha key = null e rappresenta l’inizio senza carattere.
+
+// Insert:
+// Parti dalla radice.
+// Per ogni carattere ch:
+// se non esiste children[ch], crealo con new TrieNode(ch);
+// spostati su quel figlio.
+// Alla fine marca isWord = true sul nodo raggiunto.
+
+// Contains:
+// Parti dalla radice.
+// Per ogni carattere ch della parola:
+// se manca children[ch] ⇒ parola non presente ⇒ false.
+// altrimenti avanza.
+// Alla fine ritorna node.isWord (se è solo prefisso, sarà false).
+
+// Complessità:
+// insert(word) e contains(word) sono O(n) dove n è la lunghezza della parola.
+
+// Errori comuni:
+
+// Sovrascrivere children invece di navigarlo.
+// Impostare isWord sulla radice o su ogni nodo: va solo sul nodo finale.
+// Confondere prefisso con parola completa: contains('cas') deve dare false se non hai inserito esattamente 'cas'.
+// Usare stringhe come figli invece di TrieNode
